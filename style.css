@@ -176,9 +176,14 @@ section{ position:relative; padding:110px 24px; max-width:960px; margin:0 auto; 
 @media (max-width:640px){ .gallery{ grid-template-columns:1fr; } }
 .gframe{
   border:1px solid var(--line); padding:6px;
-  clip-path:inset(0 100% 0 0); transition:clip-path 1s cubic-bezier(.22,.9,.3,1);
+  opacity:0.001; clip-path:inset(0 100% 0 0);
+  transition:clip-path 1s cubic-bezier(.22,.9,.3,1), opacity 0.4s ease;
 }
-.gframe.in-view{ clip-path:inset(0 0% 0 0); }
+.gframe.in-view{ opacity:1; clip-path:inset(0 0% 0 0); }
+/* Jaring pengaman: kalau JS gagal total dan class .in-view tidak pernah
+   ditambahkan, tampilkan foto apa adanya setelah beberapa detik lewat CSS saja. */
+@keyframes force-reveal{ to{ opacity:1; clip-path:inset(0 0% 0 0); } }
+.gframe{ animation:force-reveal 0.01s linear 4s forwards; }
 .gframe:nth-child(2n){ margin-top:36px; }
 @media (max-width:640px){ .gframe:nth-child(2n){ margin-top:0; } }
 .gframe img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; transition:transform 0.6s ease; }
@@ -212,6 +217,46 @@ section{ position:relative; padding:110px 24px; max-width:960px; margin:0 auto; 
   0%{ opacity:0; transform:translateY(0) scale(0.6); }
   20%{ opacity:1; }
   100%{ opacity:0; transform:translateY(-140px) scale(1.4); }
+}
+
+/* ---------------- CELEBRATION (Raise a Glass) ---------------- */
+.confetti{
+  position:fixed; top:-24px; z-index:55; pointer-events:none; will-change:transform, opacity;
+  opacity:0;
+}
+@keyframes confetti-fall{
+  0%{ transform:translateY(0) rotate(0deg); opacity:0; }
+  8%{ opacity:1; }
+  88%{ opacity:1; }
+  100%{ transform:translateY(112vh) rotate(var(--spin)); opacity:0; }
+}
+.celebrate-ring{
+  position:fixed; z-index:50; pointer-events:none; border-radius:50%;
+  border:1px solid var(--gold-soft); transform:translate(-50%,-50%) scale(0.2); opacity:0.85;
+  animation:celebrate-ring-expand 1.3s ease-out forwards;
+}
+@keyframes celebrate-ring-expand{
+  to{ transform:translate(-50%,-50%) scale(7); opacity:0; }
+}
+.celebrate-glow{
+  position:fixed; inset:0; z-index:45; pointer-events:none; opacity:0;
+  background:radial-gradient(circle at var(--cx) var(--cy), rgba(228,200,136,0.28), transparent 55%);
+  animation:glow-pulse 1.5s ease-out forwards;
+}
+@keyframes glow-pulse{
+  0%{ opacity:0; }
+  35%{ opacity:1; }
+  100%{ opacity:0; }
+}
+.burst-mote{
+  position:fixed; bottom:-10px; border-radius:50%; z-index:44; pointer-events:none;
+  background:radial-gradient(circle, var(--gold-soft), transparent 70%); opacity:0;
+  animation-name: burst-drift; animation-timing-function:ease-out; animation-fill-mode:forwards;
+}
+@keyframes burst-drift{
+  0%{ transform:translate(0,0); opacity:0; }
+  12%{ opacity:0.8; }
+  100%{ transform:translate(var(--drift-x), -80vh); opacity:0; }
 }
 
 /* ---------------- CLOSING ---------------- */
