@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Selamat Ulang Tahun — Undangan Emas</title>
+<title>Happy Birthday — A Golden Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,86 +11,99 @@
 </head>
 <body>
 
+<div id="scrollProgress"></div>
+<div id="particles"></div>
+<div id="cursorRing"></div>
+<div id="cursorDot"></div>
+
 <audio id="bgm" loop>
   <source src="musik.mp3" type="audio/mpeg">
 </audio>
 
 <div id="gate">
   <div class="gate-frame">
-    <button class="seal" id="sealBtn" aria-label="Buka undangan">♥</button>
-    <h2 class="display">Sebuah Undangan Kecil</h2>
-    <p>disiapkan khusus, untuk hari yang istimewa</p>
-    <span class="gate-cta">Ketuk segel untuk membuka</span>
+    <div class="seal-wrap" id="sealWrap">
+      <span class="ring-burst"></span>
+      <button class="seal" id="sealBtn" aria-label="Open the invitation">&#10084;</button>
+      <svg class="crack" viewBox="0 0 78 78">
+        <path d="M39 10 L34 30 L44 38 L30 55 L39 68" />
+        <path d="M20 25 L38 34 L26 46" />
+        <path d="M58 22 L44 36 L54 50 L42 62" />
+      </svg>
+    </div>
+    <h2 class="display">A Small Invitation</h2>
+    <p>prepared just for you, for a special day</p>
+    <span class="gate-cta">Tap the seal to open</span>
   </div>
 </div>
 
 <main id="content">
 
   <section class="hero">
-    <span class="kicker">selamat merayakan</span>
-    <h1>Selamat Ulang Tahun, <em>Sayang</em></h1>
-    <p class="sub">Satu tahun lagi telah dilalui dengan begitu anggun. Halaman ini disusun untuk merayakan setiap bagian darimu — hari ini, dan seterusnya.</p>
+    <span class="kicker">wishing you joy</span>
+    <h1 id="heroTitle">Happy Birthday, Darling</h1>
+    <p class="sub">Another year has passed with such grace. This page was made to celebrate every part of you — today, and every day after.</p>
     <svg class="ornament" viewBox="0 0 64 24" fill="none">
-      <line x1="0" y1="12" x2="24" y2="12" stroke-width="1"/>
+      <line class="draw" x1="0" y1="12" x2="24" y2="12" stroke-width="1"/>
       <circle cx="32" cy="12" r="4" stroke-width="1"/>
-      <line x1="40" y1="12" x2="64" y2="12" stroke-width="1"/>
+      <line class="draw" x1="40" y1="12" x2="64" y2="12" stroke-width="1"/>
     </svg>
   </section>
 
-  <section class="letter">
+  <section class="letter reveal">
     <figure class="letter-frame">
-      <img src="my1.jpg" alt="Foto kenangan bersama">
-      <figcaption>satu dari sekian momen favorit</figcaption>
+      <img src="my1.jpg" alt="A memory together">
+      <figcaption>one of many favorite moments</figcaption>
     </figure>
     <div class="letter-text">
-      <span class="label">Sepucuk surat</span>
-      <blockquote>Di antara semua hal yang datang dan pergi, kehadiranmu adalah yang paling ingin selalu aku syukuri. Terima kasih telah menjadi dirimu, sepenuhnya.</blockquote>
-      <div class="sign">— dengan hormat dan sayang</div>
+      <span class="label">A little letter</span>
+      <blockquote>Among everything that comes and goes, your presence is the one thing I'll always be grateful for. Thank you for being exactly who you are.</blockquote>
+      <div class="sign">— with love and admiration</div>
     </div>
   </section>
 
   <section class="gallery-section">
-    <div class="gallery-head">
-      <span class="label">Album kecil</span>
-      <h2>Sekilas Cerita Kita</h2>
+    <div class="gallery-head reveal">
+      <span class="label">A little album</span>
+      <h2>A Glimpse of Our Story</h2>
     </div>
     <div class="gallery">
       <figure class="gframe">
-        <img src="my2.jpg" alt="Kenangan pertama">
-        <figcaption>awal cerita</figcaption>
+        <img src="my2.jpg" alt="First memory">
+        <figcaption>where it began</figcaption>
       </figure>
       <figure class="gframe">
-        <img src="my3.jpg" alt="Kenangan kedua">
-        <figcaption>hari-hari biasa</figcaption>
+        <img src="my3.jpg" alt="Second memory">
+        <figcaption>the ordinary days</figcaption>
       </figure>
       <figure class="gframe">
-        <img src="my4.jpg" alt="Kenangan ketiga">
-        <figcaption>yang selalu dikenang</figcaption>
+        <img src="my4.jpg" alt="Third memory">
+        <figcaption>always remembered</figcaption>
       </figure>
       <figure class="gframe">
-        <img src="my5.jpg" alt="Kenangan keempat">
-        <figcaption>dan yang masih berlanjut</figcaption>
+        <img src="my5.jpg" alt="Fourth memory">
+        <figcaption>and still going</figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="toast">
-    <span class="label">Sebuah harapan</span>
-    <h2>Angkat gelas untuk tahun yang baru</h2>
-    <button class="glass-btn" id="toastBtn">Angkat Gelas</button>
-    <p class="toast-note" id="toastNote">Untuk kesehatan, kebahagiaan, dan segala hal baik yang menantimu.</p>
+  <section class="toast reveal">
+    <span class="label">A wish</span>
+    <h2>Raise a glass to the year ahead</h2>
+    <button class="glass-btn" id="toastBtn">Raise a Glass</button>
+    <p class="toast-note" id="toastNote">To health, happiness, and every good thing waiting for you.</p>
     <div id="sparkle"></div>
   </section>
 
-  <section class="closing">
-    <h2>Selamat Ulang Tahun.</h2>
-    <p>Semoga tahun ini menjadi salah satu babnya yang paling indah untuk dikenang nanti.</p>
-    <div class="made">disusun dengan tulus · 2026</div>
+  <section class="closing reveal">
+    <h2>Happy Birthday.</h2>
+    <p>May this year become one of the most beautiful chapters to look back on.</p>
+    <div class="made">made with love · 2026</div>
   </section>
 
 </main>
 
-<button id="musicToggle" aria-label="Putar musik latar" aria-pressed="false">
+<button id="musicToggle" aria-label="Play background music" aria-pressed="false">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
 </button>
 <div id="musicHint"></div>
